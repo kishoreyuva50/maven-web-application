@@ -21,7 +21,7 @@ node
     stage('copy file to ubuntu')
     {
         sshagent(['29b2b746-a6d9-47ae-99db-dc6ab9eb70de']) {
-        sh "ssh -o StrictHostKeyChecking=no ubuntu@65.1.100.249:docker info"
+        sh "ssh -o StrictHostKeyChecking=no ubuntu@65.1.100.249 docker info"
     }
-  }  **/
+  } 
 }
