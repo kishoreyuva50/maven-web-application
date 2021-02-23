@@ -1,0 +1,27 @@
+node
+{
+    def mavenHome = tool name: "maven"
+    stage('git')
+    {
+        git credentialsId: '86c598b5-3a95-4c92-9cfc-5a49ec9e3355', url: 'https://github.com/kishoreyuva50/maven-web-application.git'
+    }
+    stage('maven')
+    {
+        sh "${mavenHome}/bin/mvn clean package"
+    }
+    stage('sonarqube scanner')
+    {
+        sh "${mavenHome}/bin/mvn sonar:sonar"
+    }
+    stage('nexus')
+    {
+    sh "${mavenHome}/bin/mvn deploy"
+    }
+    /**
+    stage('copy file to ubuntu')
+    {
+        sshagent(['29b2b746-a6d9-47ae-99db-dc6ab9eb70de']) {
+        sh "ssh -o StrictHostKeyChecking=no ubuntu@65.1.100.249:docker info"
+    }
+  }  **/
+}
