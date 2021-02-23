@@ -17,7 +17,6 @@ node
     {
     sh "${mavenHome}/bin/mvn deploy"
     }
-    /**
     stage('copy file to ubuntu')
     {
         sshagent(['29b2b746-a6d9-47ae-99db-dc6ab9eb70de']) {
