@@ -1,4 +1,4 @@
-node
+node('labels')
 {
     def mavenHome = tool name: "maven"
     stage('git')
