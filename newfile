@@ -11,6 +11,6 @@ node
     }   
     stage('copy file to ubuntu')
     {
-        sh "docker images"
+        sh "docker build -t kishoreyuva50/pravali:v1.0"
   } 
 }
