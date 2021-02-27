@@ -8,20 +8,9 @@ node('labels')
     stage('maven')
     {
         sh "${mavenHome}/bin/mvn clean package"
-    }
-    stage('sonarqube scanner')
-    {
-        sh "${mavenHome}/bin/mvn sonar:sonar"
-    }
-    stage('nexus')
-    {
-    sh "${mavenHome}/bin/mvn deploy"
-    }
-   
+    }   
     stage('copy file to ubuntu')
     {
-        sshagent(['b48b2437-977d-4834-8c3b-81df0283e8ba']) {
-        sh "ssh -O StrictHostKeyChecking=no ubuntu@65.1.100.249 docker images"
-    }
+        sh "docker images"
   } 
 }
